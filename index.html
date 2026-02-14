@@ -28,14 +28,13 @@ box-shadow:0 0 20px rgba(0,0,0,0.2);
 width:90%;
 max-width:350px;
 animation: pop 0.5s;
+position:absolute;
 }
 
 @keyframes pop{
 from{transform:scale(0);}
 to{transform:scale(1);}
 }
-
-/* PIN kotak */
 
 .pin{
 display:flex;
@@ -53,73 +52,51 @@ border:none;
 border-radius:10px;
 }
 
-/* tombol */
-
 button{
-
 padding:10px 20px;
 border:none;
 border-radius:15px;
 font-size:18px;
 margin:10px;
-
+cursor:pointer;
 }
-
-/* tombol iya */
 
 .yes{
-
 background:white;
 color:#ff4d6d;
-
 }
 
-/* tombol ngga */
-
 .no{
-
 background:#ff4d6d;
 color:white;
 position:relative;
-
 }
 
-/* hadiah */
-
 .gift{
-
 font-size:80px;
 cursor:pointer;
 animation: bounce 1s infinite;
-
 }
 
 @keyframes bounce{
-
 50%{transform:translateY(-10px);}
-
 }
 
 </style>
-
 </head>
 
 <body>
 
-
-<!-- HALAMAN 1 PIN -->
-
+<!-- PAGE 1 -->
 <div class="box" id="page1">
 
 <h2>Masukin PIN 🎂</h2>
 
 <div class="pin">
-
 <input maxlength="1" id="p1">
 <input maxlength="1" id="p2">
 <input maxlength="1" id="p3">
 <input maxlength="1" id="p4">
-
 </div>
 
 <button onclick="checkPin()">Buka</button>
@@ -127,64 +104,42 @@ animation: bounce 1s infinite;
 </div>
 
 
-
-<!-- HALAMAN 2 -->
-
+<!-- PAGE 2 -->
 <div class="box" id="page2" style="display:none;">
 
 <h2>Ada sesuatu buat kamu 😳</h2>
 
 <p>Mau buka ga?</p>
 
-<button class="yes" onclick="page3()">Mau ❤️</button>
+<button class="yes" onclick="showPage3()">Mau ❤️</button>
 
 <button class="no" id="noBtn">Ngga 😝</button>
 
 </div>
 
 
-
-<!-- HALAMAN 3 -->
-
-<div class="box" id="page3" style="display:none;">
+<!-- PAGE 3 -->
+<div class="box" id="page3Div" style="display:none;">
 
 <h2>Buka hadiah ini 🎁</h2>
 
-<div class="gift" onclick="page4()">🎁</div>
+<div class="gift" onclick="showPage4()">🎁</div>
 
 </div>
 
 
-
-<!-- HALAMAN 4 -->
-
-<div class="box" id="page4" style="display:none;">
+<!-- PAGE 4 -->
+<div class="box" id="page4Div" style="display:none;">
 
 <h2>Happy Valentine ❤️</h2>
 
-<p>
+<p>happy valentine cintakuuu, duniakuuu, wanita tercantikkuuu, yarra kesayangann samuelll</p>
 
-happy valentine cintakuuu, duniakuuu, wanita tercantikkuuu, yarra kesayangann samuelll
+<p>aku ga biasa ngasih kata kata manis di hari spesial sebenarnya, tpi demi kamuuu</p>
 
-</p>
+<p>sayangggkuuu, terimakasihhh sudah mau nerimaa akuuu</p>
 
-<p>
-
-aku ga biasa ngasih kata kata manis di hari spesial sebenarnya, tpi demi kamuuu, cantiknya akuuu
-
-</p>
-
-<p>
-
-sayangggkuuu, terimakasihhh sudah mau nerimaa akuuu sudah ngertiin aku
-
-</p>
-
-<p>
-
-love u always cantikuu ♥️
-
-</p>
+<p>love u always cantikuu ♥️</p>
 
 </div>
 
@@ -192,15 +147,24 @@ love u always cantikuu ♥️
 
 <script>
 
-var pinBenar="0907";
+var pinBenar="1811";
 
+var page1=document.getElementById("page1");
+var page2=document.getElementById("page2");
+var page3Div=document.getElementById("page3Div");
+var page4Div=document.getElementById("page4Div");
+
+var noBtn=document.getElementById("noBtn");
 
 function checkPin(){
 
 var pin=
-p1.value+p2.value+p3.value+p4.value;
+document.getElementById("p1").value+
+document.getElementById("p2").value+
+document.getElementById("p3").value+
+document.getElementById("p4").value;
 
-if(pin==pinBenar){
+if(pin===pinBenar){
 
 page1.style.display="none";
 page2.style.display="block";
@@ -214,28 +178,31 @@ alert("PIN salah 😝");
 }
 
 
-// tombol ngga kabur
+// tombol kabur
 
-noBtn.addEventListener("click",function(){
+noBtn.addEventListener("mouseover",function(){
 
-noBtn.style.left=Math.random()*200-100+"px";
-noBtn.style.top=Math.random()*200-100+"px";
+noBtn.style.position="relative";
+
+noBtn.style.left=(Math.random()*200-100)+"px";
+
+noBtn.style.top=(Math.random()*200-100)+"px";
 
 });
 
 
-function page3(){
+function showPage3(){
 
 page2.style.display="none";
-page3.style.display="block";
+page3Div.style.display="block";
 
 }
 
 
-function page4(){
+function showPage4(){
 
-page3.style.display="none";
-page4.style.display="block";
+page3Div.style.display="none";
+page4Div.style.display="block";
 
 }
 
