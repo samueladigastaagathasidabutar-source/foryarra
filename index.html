@@ -2,116 +2,101 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>For Yarra ❤️</title>
+<title>Special For Yarra ❤️</title>
 
 <style>
 
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
-background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:sans-serif;
+background: linear-gradient(135deg,#ff6a88,#ff99ac);
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 color:white;
+text-align:center;
 overflow:hidden;
 }
 
-/* PIN SCREEN */
-
-#pinScreen{
-text-align:center;
+.box{
+background: rgba(255,255,255,0.2);
+padding:30px;
+border-radius:25px;
+backdrop-filter: blur(10px);
+box-shadow:0 0 20px rgba(0,0,0,0.2);
+width:90%;
+max-width:350px;
+animation: pop 0.5s;
 }
 
-input{
-padding:12px;
+@keyframes pop{
+from{transform:scale(0);}
+to{transform:scale(1);}
+}
+
+/* PIN kotak */
+
+.pin{
+display:flex;
+justify-content:center;
+gap:10px;
+margin:15px;
+}
+
+.pin input{
+width:50px;
+height:60px;
+font-size:25px;
+text-align:center;
 border:none;
-border-radius:20px;
-font-size:18px;
-text-align:center;
-outline:none;
+border-radius:10px;
 }
+
+/* tombol */
 
 button{
-margin-top:15px;
-padding:12px 25px;
+
+padding:10px 20px;
 border:none;
-border-radius:20px;
+border-radius:15px;
+font-size:18px;
+margin:10px;
+
+}
+
+/* tombol iya */
+
+.yes{
+
 background:white;
 color:#ff4d6d;
-font-size:18px;
-font-weight:bold;
-box-shadow:0 0 15px rgba(0,0,0,0.2);
-}
-
-/* CONTENT */
-
-#content{
-
-display:none;
 
 }
 
-.card{
+/* tombol ngga */
 
-background: rgba(255,255,255,0.2);
-
-padding:30px;
-
-border-radius:25px;
-
-width:90%;
-max-width:400px;
-
-backdrop-filter: blur(10px);
-
-box-shadow:0 0 30px rgba(0,0,0,0.2);
-
-animation: fade 2s;
-
-}
-
-@keyframes fade{
-
-from{opacity:0; transform:scale(0.8);}
-to{opacity:1; transform:scale(1);}
-
-}
-
-h1{
-
-margin-top:0;
-
-}
-
-p{
-
-line-height:1.6;
-
-}
-
-.loveBtn{
+.no{
 
 background:#ff4d6d;
 color:white;
+position:relative;
 
 }
 
-/* HEART */
+/* hadiah */
 
-.heart{
+.gift{
 
-position:absolute;
-font-size:20px;
-animation: fall linear infinite;
+font-size:80px;
+cursor:pointer;
+animation: bounce 1s infinite;
 
 }
 
-@keyframes fall{
+@keyframes bounce{
 
-0%{top:-10%; opacity:1;}
-100%{top:110%; opacity:0;}
+50%{transform:translateY(-10px);}
 
 }
 
@@ -122,52 +107,84 @@ animation: fall linear infinite;
 <body>
 
 
-<div id="pinScreen">
+<!-- HALAMAN 1 PIN -->
 
-<h2>Tebak PIN dulu 🎂</h2>
+<div class="box" id="page1">
 
-<input type="password" id="pinInput">
+<h2>Masukin PIN 🎂</h2>
 
-<br>
+<div class="pin">
 
-<button onclick="checkPin()">Buka ❤️</button>
+<input maxlength="1" id="p1">
+<input maxlength="1" id="p2">
+<input maxlength="1" id="p3">
+<input maxlength="1" id="p4">
+
+</div>
+
+<button onclick="checkPin()">Buka</button>
 
 </div>
 
 
 
-<div id="content">
+<!-- HALAMAN 2 -->
 
-<div class="card">
+<div class="box" id="page2" style="display:none;">
 
-<h1>Happy Valentine ❤️</h1>
+<h2>Ada sesuatu buat kamu 😳</h2>
+
+<p>Mau buka ga?</p>
+
+<button class="yes" onclick="page3()">Mau ❤️</button>
+
+<button class="no" id="noBtn">Ngga 😝</button>
+
+</div>
+
+
+
+<!-- HALAMAN 3 -->
+
+<div class="box" id="page3" style="display:none;">
+
+<h2>Buka hadiah ini 🎁</h2>
+
+<div class="gift" onclick="page4()">🎁</div>
+
+</div>
+
+
+
+<!-- HALAMAN 4 -->
+
+<div class="box" id="page4" style="display:none;">
+
+<h2>Happy Valentine ❤️</h2>
 
 <p>
+
 happy valentine cintakuuu, duniakuuu, wanita tercantikkuuu, yarra kesayangann samuelll
+
 </p>
 
 <p>
+
 aku ga biasa ngasih kata kata manis di hari spesial sebenarnya, tpi demi kamuuu, cantiknya akuuu
+
 </p>
 
 <p>
-sayangggkuuu, terimakasihhh sudah mau nerimaa akuuu sudah ngertiin aku, aku seneng banget kamu ada di dunia akuuu, jadi penyemangat akuu, bener bener secinta itu aku sama kamuu, kamu buat aku bahagiaaa walaupun kadang kita berantem, tapi tetep ajaa cinta aku ke kamu makin banyakkk 🤭
+
+sayangggkuuu, terimakasihhh sudah mau nerimaa akuuu sudah ngertiin aku
+
 </p>
 
 <p>
-jangan pernah bosen sama aku, jangan berpaling dari akuu
-</p>
 
-<p>
 love u always cantikuu ♥️
+
 </p>
-
-
-<button class="loveBtn" onclick="love()">
-I LOVE YOU ❤️
-</button>
-
-</div>
 
 </div>
 
@@ -180,51 +197,45 @@ var pinBenar="0907";
 
 function checkPin(){
 
-var pin=document.getElementById("pinInput").value;
+var pin=
+p1.value+p2.value+p3.value+p4.value;
 
 if(pin==pinBenar){
 
-document.getElementById("pinScreen").style.display="none";
-document.getElementById("content").style.display="block";
-
-startHearts();
+page1.style.display="none";
+page2.style.display="block";
 
 }else{
 
-alert("Salahh 😝");
+alert("PIN salah 😝");
 
 }
 
 }
 
 
-function love(){
+// tombol ngga kabur
 
-alert("Samuel ❤️ Yarra selamanya");
+noBtn.addEventListener("click",function(){
+
+noBtn.style.left=Math.random()*200-100+"px";
+noBtn.style.top=Math.random()*200-100+"px";
+
+});
+
+
+function page3(){
+
+page2.style.display="none";
+page3.style.display="block";
 
 }
 
 
+function page4(){
 
-function startHearts(){
-
-setInterval(function(){
-
-var heart=document.createElement("div");
-
-heart.innerHTML="❤️";
-
-heart.className="heart";
-
-heart.style.left=Math.random()*100+"%";
-
-heart.style.animationDuration=(Math.random()*3+3)+"s";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),5000);
-
-},400);
+page3.style.display="none";
+page4.style.display="block";
 
 }
 
